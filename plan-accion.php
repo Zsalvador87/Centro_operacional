@@ -74,7 +74,7 @@
                             <th>Usuario</th>
                             <th>Supervisor</th>
                             <th>Alertas</th>
-                            <th>Rank</th>
+                            <th>Desempeño</th>
                             <th>Acuerdos</th>
                             <th>Acciones</th>
                             <th>Monitoreos</th>
@@ -117,7 +117,7 @@
                             <th>Usuario</th>
                             <th>Supervisor</th>
                             <th>Alertas</th>
-                            <th>Rank</th>
+                            <th>Desempeño</th>
                             <th>Acuerdos</th>
                             <th>Acciones</th>
                             <th>Monitoreos</th>
@@ -178,7 +178,7 @@
                             <th>Usuario</th>
                             <th>Supervisor</th>
                             <th>Alertas</th>
-                            <th>Rank</th>
+                            <th>Desempeño</th>
                             <th>Acuerdos</th>
                             <th>Acciones</th>
                             <th>Monitoreos</th>

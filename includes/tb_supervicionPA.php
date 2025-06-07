@@ -71,6 +71,7 @@ if($num_filas > 0){
         $output['data'] .= '<td class="txt-center">Low</td>';
         $output['data'] .= '<td class="txt-center"><img class="icono_pdf" src="img/pdf_icon.png" width="15px" alt="PDF"></td>';
         $output['data'] .= '<td class="txt-center"><button onclick="abrirModal()">Ver más</button></td>';
+        $output['data'] .= '<td class="txt-center"><button onclick="">Ver más</button></td>';
         $output['data'] .= '</tr>';
     }
 }else{
