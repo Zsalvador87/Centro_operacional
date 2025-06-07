@@ -27,6 +27,659 @@ html{
 
 body{
     font-size: 16px; /* 1rem = 10px*/
+    background-color: var(--obscuro);
+    color: var(--blanco);
+    line-height: 1.2;
+}
+
+h2, p {
+    margin: 0;
+} 
+
+a {
+    color: inherit;
+    text-decoration: none;
+} 
+
+table{
+    table-layout: fixed;
+    width: 100%;
+    border: .2rem solid var(--obscuro);
+    border-collapse: collapse;
+    font-size: 1.3rem;
+}
+
+thead{
+    background-color: var(--primario-oscuro);
+}
+
+th, td, tr{
+    border: .2rem solid var(--obscuro);
+    color: var(--obscuro);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--hover);
+}
+  
+tbody tr:nth-child(even) {
+    background-color: var(--primario);
+}
+
+/**************************************************************************/
+/*                              Utilidades                                */
+/**************************************************************************/
+.txt-center{
+    text-align: center;
+}
+
+
+/*****************************************************************/
+/*                  Título principal superior                    */
+/*****************************************************************/
+.cabecera{
+    color: var(--blanco);
+    text-align: center;
+    text-transform: uppercase;
+    padding: 1.5rem 0;
+}
+
+.nav-bg{
+    background-color: var(--primario);
+}
+
+.menu-navegacion{
+    max-width: 80rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-navegacion a{
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: all .3s ease;
+    transition: color .3s;
+}
+
+.menu-navegacion a:hover{
+    background-color: var(--hover);
+    color: var(--obscuro);
+}
+
+/**********************************************************************/
+/*                      Estilo base para contenido                    */
+/**********************************************************************/
+.contenido{
+    min-width: 120rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+}
+
+/*Título principal de página (Primer título)*/
+.titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem 2rem 3rem;
+}
+
+.titulo h1{
+    margin: 0;
+}
+
+.titulo input::placeholder{
+    font-size: 1rem;
+}
+
+.titulo__fecha{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.boton{
+    width: 8rem;
+    height: 3rem;
+    color: var(--obscuro);
+    background-color: var(--hover);
+    border: .2rem solid var(--secundario);
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.boton:hover{
+    background-color: var(--hover);
+    color: var(--blanco);
+}
+
+.filtro-fecha__pestaña{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filtro-usuario__pestaña{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/*Tarjetas utilizadas en las distintas páginas (Individuales)*/
+.tarjeta{
+    width: 26rem;
+    min-width: 26rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: solid white;
+    border-radius: 1rem;
+    background-color: var(--primario);
+}
+
+.tj__titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    border-bottom: solid var(--blanco);
+    text-align: center;
+}
+
+/*Tarjetas de tipo 1 (título, ejecutado, objetivo y desviación)*/
+.tj-tipo1__indicadores{
+    margin: 1rem 0;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.tj-tipo1__indicadores p{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.tj-tipo1__indicadores span{
+    font-weight: normal;
+}
+
+.tj-tipo1__indicadores span::before{
+    content: '\A';
+    white-space: pre;
+}
+
+/*Tarjetas de tipo 2 (título, miembros, promedio, alertas y botón)*/
+.tj-tipo2__indicadores{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.tj-tipo2__indicadores p{
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.tj-tipo2__indicadores span{
+    font-weight: normal;
+}
+
+.tj-tipo2__indicadores span::before{
+    content: '\A';
+    white-space: pre;
+}
+
+/*Sistema de pestañas*/
+.contenedor__tabs{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tab{
+    padding: 1rem;
+    margin: 0 1rem 0 0;
+    list-style: none;
+    border: .2rem solid var(--secundario);
+    border-radius: 1rem;
+}
+
+.tab:hover{
+    cursor: pointer;
+}
+
+/*Estilo para el contenido de los bloques*/
+.bloque{
+    max-width: 122rem;
+    margin: 1rem;
+    position: absolute;
+    top: 0;
+    /*transition: all .5s ease;*/
+    display: none;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 5rem auto;
+}
+
+/*Activo para kpis*/
+.bloque.activo-i{
+    display: grid;
+}
+
+.tab.activo-i{
+    background-color: var(--primario-oscuro);
+    /*transition: all .5s ease;*/
+}
+
+/*Activo para plan de acción*/
+.bloque.activo-p{
+    display: flex;
+    flex-direction: column;
+}
+
+.tab.activo-p{
+    background-color: var(--primario-oscuro);
+    /*transition: all .5s ease;*/
+}
+
+/*Zona de filtro*/
+.bloque__filtro{
+    width: 60rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+/*********************************************************************/
+/*                              Index                                */
+/*********************************************************************/
+.tarjetas_index{
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+/***********************************************************************/
+/*                              Equipos                                */
+/***********************************************************************/
+/*Sección de las tarjetas*/
+.tarjetas-equipos{
+    width: 95%;
+    height: 18rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    margin: 0 auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+/* @media (min-width: 1070px) {
+   .tarjetas-equipos{
+        overflow: hidden;
+   }
+} */
+
+/*Sección tabla de usuarios*/
+.tbEquipos{
+    width: 95%;
+    height: 70rem;
+    margin: 0 auto;
+    display: flex;
+    gap: 2rem;
+    padding-top: 2rem;
+    flex-direction: column;
+    border-radius: .5rem;
+    border: none;
+    background-color: var(--primario);
+}
+
+.tbEquipos__filtro{
+    display: flex;
+    gap: 2rem;
+}
+
+.tbEquipos__buscador{
+    width: 40rem;
+}
+
+.tbe__registros{
+    height: 51.5rem;
+}
+
+
+.tbEquipos__titulo, .tbEquipos__filtro{
+    margin-left: 2rem;
+}
+
+.tbEquipos thead th:nth-child(1){
+    width: 17%;
+}
+
+.tbEquipos thead th:nth-child(2){
+    width: 15%;
+}
+
+.tbEquipos thead th:nth-child(3){
+    width: 13%;
+}
+
+.tbEquipos thead th:nth-child(4){
+    width: 4%;
+}
+
+.tbEquipos thead th:nth-child(5){
+    width: 4%;
+}
+
+.tbEquipos thead th:nth-child(6){
+    width: 4%;
+}
+
+.tbEquipos thead th:nth-child(7){
+    width: 4%;
+}
+
+.tbEquipos thead th:nth-child(8){
+    width: 4%;
+}
+
+.nav-paginacion{
+    display: flex;
+    gap: 1rem;
+    margin-right: 2rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.paginacion ul{
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+}
+
+.paginacion ul li a{
+    padding: 1rem;
+    background-color: var(--primario-oscuro);
+    border-radius: .5rem;
+}
+
+
+
+/************************************************************************/
+/*                                  KPIs                                */
+/************************************************************************/
+/*Zona de las pestañas*/
+.resumen__indicadores{
+    width: 90%;
+    max-width: 128rem;
+    height: 65rem;
+    background-color: var(--primario);
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+.subcontenedor-i{
+    min-height: 95%;
+    position: relative;
+}
+
+/*Zona de tarjetas*/
+.bloque__tarjetas{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    grid-row: 2/3;
+}
+
+/*Zona de gráfica de pastel*/
+.bloque__grafica{
+    border: solid var(--blanco);
+    border-radius: 1rem;
+    width: 26rem;
+    height: 47rem;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*La gráfica queda más corta y no utiliza todo el espacio, por eso el uso de estos media queries*/
+@media (min-width: 1300px){
+    .bloque__grafica{
+        width: 28rem;
+    }
+}
+
+@media (min-width: 1360px){
+    .bloque__grafica{
+        width: 33rem;
+    }
+}
+
+@media (min-width: 1366px){
+    .bloque__grafica{
+        width: 34rem;
+    }
+}
+
+@media (min-width: 1400px){
+    .bloque__grafica{
+        width: 38rem;
+    }
+}
+
+@media (min-width: 1600px){
+    .bloque__grafica{
+        width: 42rem;
+    }
+}
+
+@media (min-width: 1920px){
+    .bloque__grafica{
+        width: 42rem;
+    }
+}
+
+/******************************************************************************/
+/*                              Plan de acción                                */
+/******************************************************************************/
+/*Zona de las pestañas*/
+.resumen__agentes{
+    width: 90%;
+    max-width: 128rem;
+    height: 77rem;
+    background-color: var(--primario);
+    padding: 1rem;
+    margin: 0 auto;
+    /*display: none;/*Temporal para configurar modal*/
+}
+
+.subcontenedor-p{
+    min-height: 95%;
+    position: relative;
+}
+
+/*Estilo para el contenido de los bloques*/
+
+.p_tbAccion thead th:nth-child(1){
+    width: 30%;
+}
+
+.p_tbAccion thead th:nth-child(2){
+    width: 12%;
+}
+
+.p_tbAccion thead th:nth-child(3){
+    width: 30%;
+}
+
+.p_tbAccion thead th:nth-child(4){
+    width: 7%;
+}
+
+.p_tbAccion thead th:nth-child(5){
+    width: 7%;
+}
+
+.p_tbAccion thead th:nth-child(6){
+    width: 7%;
+}
+
+.p_tbAccion thead th:nth-child(7){
+    width: 7%;
+}
+
+/*Apartado para modal*/
+#modal{
+    width: 120rem;
+    max-width: 120rem;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+#modal h3{
+    margin: 0;
+}
+
+/*Información del agente*/
+#modal .info_agente{
+    display: grid;
+    grid-template-columns: 90rem auto;
+    grid-template-rows: 4rem auto;
+    align-items: center;
+    gap: .5rem;
+}
+
+#modal .info_agente span{
+    font-weight: bold;
+}
+
+#modal .info_agente .informacion{
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+#modal .info_agente .estatus{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#modal .info_agente .estatus--desicion{
+    width: 10rem;
+    padding: .5rem;
+    background-color: greenyellow;
+    border-radius: 1rem;
+}
+
+/**Evaluacion del agente*/
+#modal .evaluacion_agente{
+    width: 48rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+#modal .evaluacion_agente table{
+    text-align: center;
+}
+
+/*Alertas del agente*/
+#modal .alertas_agente{
+    width: 75rem;
+    margin: 2rem 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+#modal .alertas_agente table{
+    text-align: center;
+}
+
+/*Zona para cargar documentos PDF*/
+#modal .zona_carga{
+    width: 40rem;
+    display: none;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+#modal .zona_carga input[type="file"]{
+    padding: .5rem;
+    border: .1rem solid var(--obscuro);
+    border-radius: 1rem;
+}
+
+/*Zona para colocar el enlace del feedback*/
+#modal .zona_enlace{
+    display: none;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+#modal .activar_zona{
+    display: flex;
+    flex-direction: column;
+}
+\ No newline at end of file
+:root{
+    --blanco: #FFFFFF;
+    --primario: #4ebd46;
+    --primario-oscuro: #42993c;
+    --secundario: #363b40;
+    --obscuro: #040e18;
+    --hover: #5ef354;
+
+    --fuentePrincipal: 'Roboto', sans-serif;
+
+}
+
+
+/************************************************************************/
+/*                              Globales                                */
+/************************************************************************/
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;
+    font-family: var(--fuentePrincipal);
+}
+
+
+body{
+    font-size: 16px; /* 1rem = 10px*/
     background-color: var(--blanco);
     color: var(--obscuro);
     line-height: 1.2;
